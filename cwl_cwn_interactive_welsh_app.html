@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cy">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cwl Cŵn — Prototeip Ap Rhyngweithiol</title>
+<style>
+  :root{--pink:#ffd8e7;--pink-deep:#ff8fbd;--blush:#fff1f7;--yellow:#fff2a8;--yellow-deep:#ffd84d;--cream:#fffdf7;--ink:#3b2931;--muted:#816d75;--mint:#dff8ec;--shadow:#ff8fbd2a;}
+  *{box-sizing:border-box;font-family:Inter, ui-rounded, Arial, sans-serif}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 20%,#fff 0 8%,transparent 9%),linear-gradient(135deg,var(--pink),var(--yellow));display:flex;align-items:center;justify-content:center;padding:16px;color:var(--ink)}
+  .phone{width:min(430px,100%);height:860px;background:var(--cream);border-radius:38px;box-shadow:0 24px 70px #0002;border:9px solid #fff;overflow:hidden;position:relative}.top{padding:24px 22px 16px;background:linear-gradient(135deg,var(--pink),var(--yellow));border-bottom-left-radius:30px;border-bottom-right-radius:30px;position:relative;overflow:hidden}.top:after{content:"";position:absolute;right:-40px;top:-35px;width:150px;height:150px;border-radius:50%;background:#fff8}.brand{display:flex;justify-content:space-between;align-items:center;gap:10px;position:relative;z-index:2}.brand h1{margin:0;font-size:30px;letter-spacing:-.5px}.badge{background:#fff;border-radius:999px;padding:9px 13px;font-weight:900;font-size:12px;box-shadow:0 6px 16px #0001}.small{font-size:13px;color:var(--muted);line-height:1.45}.tagline{margin:8px 0 0;max-width:310px;font-weight:650;color:#6b4a54}.screen{display:none;padding:16px 18px 100px;height:682px;overflow:auto}.screen.active{display:block}.screen::-webkit-scrollbar{width:0}.tabs{position:absolute;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;gap:3px;padding:12px 6px 17px;border-top:1px solid #f4dce7}.tab{border:0;background:transparent;color:var(--muted);font-weight:900;font-size:10.5px;padding:9px 7px;border-radius:16px;cursor:pointer}.tab.active{background:var(--pink);color:var(--ink)}
+  .card{background:#fff;border:1px solid #f7dce8;border-radius:26px;padding:16px;margin:12px 0;box-shadow:0 9px 24px var(--shadow)}h2,h3{margin:0 0 8px}.row{display:flex;gap:10px;align-items:stretch}.row>*{flex:1}.pet{display:flex;gap:14px;align-items:center}.avatar{width:78px;height:78px;border-radius:26px;background:linear-gradient(135deg,var(--yellow),var(--pink-deep));display:flex;align-items:center;justify-content:center;font-size:40px}.pill{display:inline-block;background:var(--yellow);border-radius:999px;padding:7px 10px;margin:4px 4px 0 0;font-size:12px;font-weight:900}.pill.pink{background:var(--pink)}.pill.green{background:var(--mint)}.btn{border:0;background:var(--pink-deep);color:#fff;border-radius:18px;padding:12px 14px;font-weight:900;cursor:pointer;box-shadow:0 5px 12px #ff8fbd36}.btn.yellow{background:var(--yellow-deep);color:var(--ink)}.btn.ghost{background:#fff;color:var(--ink);border:1px solid #f4cddd}.btn:active{transform:scale(.98)}
+  .map{height:250px;background:radial-gradient(circle at 66% 44%,#fff 0 5px,transparent 6px),linear-gradient(45deg,#fce8f0 25%,#fff8ca 25% 50%,#fce8f0 50% 75%,#fff8ca 75%);background-size:100% 100%,48px 48px;border-radius:28px;position:relative;overflow:hidden;border:1px solid #fff}.pin{position:absolute;left:66%;top:44%;font-size:45px;transform:translate(-50%,-50%);animation:bounce 1.2s infinite}.ring{position:absolute;left:66%;top:44%;width:120px;height:120px;border-radius:50%;border:3px dashed var(--pink-deep);transform:translate(-50%,-50%)}.humanpin{position:absolute;left:28%;top:64%;font-size:34px}.route{position:absolute;left:34%;top:58%;width:120px;border-top:5px dotted #ff8fbd;transform:rotate(-22deg)}@keyframes bounce{50%{transform:translate(-50%,-61%)}}
+  label{font-size:13px;font-weight:900;margin-top:10px;display:block}input,select,textarea{width:100%;border:1px solid #efc9d8;border-radius:16px;padding:12px;background:#fff;font-size:14px;margin-top:6px;color:var(--ink)}textarea{min-height:70px}.human{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid #f6e3eb;padding-top:10px;margin-top:10px}.jewel{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center}.gem{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff 0 12px,var(--yellow) 13px 27px,var(--pink-deep) 28px);display:flex;align-items:center;justify-content:center;font-size:28px}.alert{background:#fff0f6;border-left:5px solid var(--pink-deep);padding:12px;border-radius:16px}.meter{height:12px;background:#f8e4ec;border-radius:999px;overflow:hidden}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--pink-deep),var(--yellow-deep));width:82%}.bigstat{font-size:23px;font-weight:950;margin-top:3px}.logoMark{font-size:38px}.poster{background:linear-gradient(135deg,var(--pink),var(--yellow));border-radius:22px;padding:16px;text-align:center;border:2px dashed #fff}.modal{display:none;position:absolute;inset:0;background:#3b293166;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.active{display:flex}.modalbox{background:#fff;border-radius:28px;padding:20px;box-shadow:0 20px 60px #0004;text-align:center;max-width:340px}.pulse{animation:pulse .8s infinite alternate}@keyframes pulse{from{box-shadow:0 0 0 0 #ff8fbd55}to{box-shadow:0 0 0 16px #ff8fbd00}}
+  .qr{width:190px;height:190px;margin:12px auto;border:10px solid #fff;background:#fff;display:grid;grid-template-columns:repeat(9,1fr);gap:4px;border-radius:18px;box-shadow:0 10px 20px #0001}.qr span{background:#3b2931;border-radius:3px}.qr .empty{background:var(--yellow)}.found{border:2px dashed var(--pink-deep);background:#fff9fc}.privacy{background:#fff7d1;border-left:5px solid var(--yellow-deep);padding:11px;border-radius:16px}
+</style>
+</head>
+<body>
+<main class="phone">
+  <section class="top">
+    <div class="brand"><h1><span class="logoMark">🐾</span> Cwl Cŵn</h1><span class="badge" id="statusBadge">Wedi cysylltu</span></div>
+    <p class="tagline">Traciwr cŵn gyda gemwaith clyfar i’r bobl sy’n eu caru.</p>
+  </section>
+
+  <section id="home" class="screen active">
+    <div class="card pet"><div class="avatar">🐶</div><div><h2 id="petName">Macsen</h2><p class="small">Daeargi Tibet • yn gwisgo traciwr coler</p><span class="pill green">Yn ddiogel</span><span class="pill">Traciwr 82%</span><span class="pill pink">Gemwaith wedi paru</span></div></div>
+    <div class="row"><div class="card"><p class="small">Pellter</p><div class="bigstat" id="distance">18 m</div></div><div class="card"><p class="small">Breichled</p><div class="bigstat">💍 91%</div></div></div>
+    <div class="card"><h3>Map byw</h3><div class="map"><div class="ring"></div><div class="route"></div><div class="humanpin">💍</div><div class="pin">🐕</div></div><p class="small"><b>Gwelwyd ddiwethaf:</b> ger yr ardd gartref • newydd ddiweddaru</p><button class="btn" onclick="refreshLocation()">Diweddaru lleoliad</button> <button class="btn yellow" onclick="startFindMode()">Dod o hyd i’m ci</button><p id="refreshMsg" class="small"></p></div>
+  </section>
+
+  <section id="pet" class="screen">
+    <div class="card"><h2>Proffil y ci</h2><label>Enw’r ci<input id="nameInput" value="Macsen"></label><label>Brîd<input value="Daeargi Tibet"></label><label>Oed / DOB<input value="Ganwyd 07/12/2024"></label><label>Rhif microsglodyn<input placeholder="Ychwanegu rhif microsglodyn"></label><label>Nodiadau milfeddygol<textarea placeholder="Manylion milfeddyg, alergeddau, meddyginiaeth, yswiriant"></textarea></label><button class="btn" onclick="savePet()">Cadw proffil</button><p id="savedMsg" class="small"></p></div>
+    <div class="card"><h3>Manylion y traciwr</h3><span class="pill">GPS coler</span><span class="pill">Gwrth-ddŵr</span><span class="pill">Rhybuddion ardal ddiogel</span><div class="meter" style="margin-top:12px"><span></span></div><p class="small">Batri traciwr y ci: 82%</p></div>
+  </section>
+
+  <section id="jewellery" class="screen">
+    <div class="card jewel"><div class="gem">💍</div><div><h2>Gemwaith dynol</h2><p class="small">Breichled, swyn neu gadwyn sy’n dirgrynu pan fydd eich ci’n mynd yn rhy bell.</p></div></div>
+    <div class="card"><h3>Gemwaith wedi paru</h3><div class="human"><div><b>Breichled Calon Binc</b><p class="small">Wedi paru â Macsen • dirgryniadau ymlaen</p></div><span>✅</span></div><div class="human"><div><b>Cadwyn Pawen Felen</b><p class="small">Swyn cyswllt brys • dirgryniad ysgafn</p></div><span>✅</span></div></div>
+    <div class="card"><h3>Gosodiadau</h3><label>Cryfder dirgryniad<select id="vibration"><option>Ysgafn</option><option>Canolig</option><option>Cryf</option></select></label><label>Rhybudd pan fydd y ci dros<select><option>25 metr</option><option>50 metr</option><option>100 metr</option></select></label><button class="btn yellow" onclick="testJewellery()">Profi’r dirgryniad</button><p id="jewelMsg" class="small"></p></div>
+  </section>
+
+  <section id="humans" class="screen">
+    <div class="card"><h2>Cylch pobl</h2><div id="humanList"><div class="human"><div><b>Mam</b><p class="small">Perchennog • mynediad ap + gemwaith</p></div><span>👑</span></div><div class="human"><div><b>Cerddwr cŵn</b><p class="small">Tracio yn ystod teithiau cerdded yn unig</p></div><span>⏱️</span></div></div></div>
+    <div class="card"><h3>Ychwanegu person</h3><label>Enw<input id="humanName" placeholder="e.e. Dad, Mam-gu, cerddwr cŵn"></label><label>Caniatâd<select id="humanPerm"><option>Mynediad ap + gemwaith</option><option>Tracio yn unig</option><option>Cyswllt brys yn unig</option></select></label><button class="btn" onclick="addHuman()">Ychwanegu</button></div>
+  </section>
+
+  <section id="qr" class="screen">
+    <div class="card"><h2>Cod QR y ci</h2><p class="small">Byddai’r cod hwn ar dag y coler. Os bydd rhywun yn dod o hyd i’r ci, gallant ei sganio i weld gwybodaeth angenrheidiol yn unig.</p><div class="qr" aria-label="Cod QR demo">
+      <span></span><span></span><span></span><span class="empty"></span><span></span><span class="empty"></span><span></span><span></span><span></span>
+      <span></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span>
+      <span></span><span></span><span></span><span class="empty"></span><span></span><span class="empty"></span><span></span><span></span><span></span>
+      <span class="empty"></span><span></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span><span class="empty"></span><span></span>
+      <span></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span><span class="empty"></span><span></span><span class="empty"></span>
+      <span class="empty"></span><span></span><span></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span><span></span>
+      <span></span><span></span><span></span><span class="empty"></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span>
+      <span></span><span class="empty"></span><span></span><span></span><span class="empty"></span><span></span><span class="empty"></span><span></span><span class="empty"></span>
+      <span></span><span></span><span></span><span class="empty"></span><span></span><span class="empty"></span><span></span><span></span><span></span>
+    </div><button class="btn" onclick="showFoundPage()">Rhagolwg: rhywun wedi sganio’r cod</button></div>
+    <div class="card found"><h3>Tudalen “Rwyf wedi dod o hyd i’r ci”</h3><p class="small"><b>Enw:</b> Macsen</p><p class="small"><b>Brîd:</b> Daeargi Tibet</p><p class="small"><b>Cyfarwyddyd:</b> Cadwch ef yn ddiogel, peidiwch â’i ryddhau oddi ar dennyn.</p><p class="small"><b>Cysylltu:</b> Botwm galw / neges i’r perchennog.</p><button class="btn yellow" onclick="foundAlert()">Hysbysu’r perchennog</button></div>
+    <div class="privacy"><b>Preifatrwydd:</b><p class="small">Ni ddylai’r dudalen gyhoeddus ddangos cyfeiriad cartref llawn na manylion personol diangen. Dangoswch rif cyswllt, enw cyntaf, anghenion meddygol y ci a botwm i rannu lleoliad y person sydd wedi dod o hyd iddo.</p></div>
+  </section>
+
+  <section id="alerts" class="screen">
+    <div class="card"><h2>Rhybuddion diogelwch</h2><div class="alert"><b>Ardal ddiogel ymlaen</b><p class="small">Mae’r gemwaith yn dirgrynu ac mae’r ap yn eich rhybuddio os bydd y ci’n gadael yr ardal.</p></div><label>Enw’r ardal ddiogel<input value="Gardd gartref"></label><label>Pellter rhybudd<select><option>25 metr</option><option>50 metr</option><option>100 metr</option></select></label><button class="btn" onclick="testAlert()">Profi rhybudd</button><p id="alertMsg" class="small"></p></div>
+    <div class="card poster"><h3>Modd Ci ar Goll</h3><p class="small">Yn actifadu dirgryniad cryfach, map byw, rhybuddion teulu a phoster i’w rannu.</p><button class="btn yellow" onclick="lostMode()">Actifadu demo</button></div>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab active" onclick="showScreen('home',this)">Cartref</button><button class="tab" onclick="showScreen('pet',this)">Ci</button><button class="tab" onclick="showScreen('jewellery',this)">Gemwaith</button><button class="tab" onclick="showScreen('humans',this)">Pobl</button><button class="tab" onclick="showScreen('qr',this)">QR</button><button class="tab" onclick="showScreen('alerts',this)">Rhybudd</button>
+  </nav>
+  <div id="modal" class="modal" onclick="closeModal()"><div class="modalbox" onclick="event.stopPropagation()"><h2 id="modalTitle">Gemwaith yn dirgrynu</h2><p id="modalText" class="small">Mae eich breichled Cwl Cŵn yn dirgrynu’n ysgafn.</p><button class="btn" onclick="closeModal()">Iawn</button></div></div>
+</main>
+<script>
+function showScreen(id,btn){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));if(btn)btn.classList.add('active')}
+function savePet(){const n=document.getElementById('nameInput').value||'Eich ci';document.getElementById('petName').textContent=n;document.getElementById('savedMsg').textContent='Wedi cadw ✓ Proffil y ci wedi diweddaru.'}
+function addHuman(){const name=document.getElementById('humanName').value.trim();if(!name)return;const perm=document.getElementById('humanPerm').value;const div=document.createElement('div');div.className='human';div.innerHTML=`<div><b>${name}</b><p class="small">${perm}</p></div><span>✅</span>`;document.getElementById('humanList').appendChild(div);document.getElementById('humanName').value=''}
+function refreshLocation(){const metres=[12,18,24,31,42];const m=metres[Math.floor(Math.random()*metres.length)];document.getElementById('distance').textContent=m+' m';document.getElementById('refreshMsg').textContent='Lleoliad wedi diweddaru ✓ Mae’r ci a’r gemwaith wedi cysylltu.'}
+function openModal(title,text){document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;document.getElementById('modal').classList.add('active');document.querySelector('.modalbox').classList.add('pulse')}
+function closeModal(){document.getElementById('modal').classList.remove('active');document.querySelector('.modalbox').classList.remove('pulse')}
+function startFindMode(){document.getElementById('statusBadge').textContent='Modd Dod o Hyd';openModal('Dod o hyd i’m ci','Mae’r gemwaith yn dirgrynu ac mae’r map yn eich tywys at eich ci.')}
+function testJewellery(){document.getElementById('jewelMsg').textContent='Dirgryniad prawf wedi’i anfon ✓';openModal('Gemwaith yn dirgrynu','Byddai eich gemwaith Cwl Cŵn yn dirgrynu nawr.')}
+function testAlert(){document.getElementById('alertMsg').textContent='Rhybudd prawf: mae’r ci wedi symud tu allan i’r ardal ddiogel.';openModal('Rhybudd ardal ddiogel','Mae eich ci wedi mynd y tu hwnt i’r pellter a ddewiswyd. Gemwaith yn dirgrynu.')}
+function lostMode(){document.getElementById('statusBadge').textContent='Ci ar Goll';openModal('Demo Modd Ci ar Goll','Mae’r cylch pobl wedi cael rhybudd, mae’r gemwaith yn dirgrynu’n gryfach ac mae tracio byw ar flaenoriaeth.')}
+function showFoundPage(){openModal('Cod QR wedi’i sganio','Byddai’r person sy’n dod o hyd i’r ci yn gweld enw’r ci, anghenion gofal, botwm cysylltu a botwm i rannu eu lleoliad — nid eich cyfeiriad cartref llawn.')}
+function foundAlert(){openModal('Perchennog wedi’i hysbysu','Byddai’r perchennog yn cael neges: “Mae rhywun wedi sganio cod QR Macsen” gyda lleoliad y sgan os yw’r person yn cytuno i’w rannu.')}
+</script>
+</body>
+</html>
